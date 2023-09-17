@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Novo Curso</title>
+    <style>
+      body {
+        background-color: rgb(179, 170, 170);
+      }
+      h1 {
+        color: rgb(0, 0, 0);
+      }
+    </style>
+  </head>
+  <body>
+    <h1>Nova meta 2.0</h1>
+    <p>
+      "Remodelando o calculo da minha meta." <br /><br />
+      "Esperando para a implementacao de banco de dados !."<br /><br />
+    </p>
+    <div>
+      <p>Digite o valor de suas vendas !. <input type="number" id="i1" /></p>
+
+      <p>Digite sua meta de valor !. <input type="number" id="i2" /></p>
+
+      <p>E qual a % de mix atendidos ?. <input type="number" id="i3" /></p>
+
+      <p>Qual a % da meta do Mix este mês ?. <input type="number" id="i4" /></p>
+
+      <p>
+        Quantos itens tem para venda no estoque esse mês ?.
+        <input type="number" id="i5" />
+      </p>
+
+      <p>Qual % de clientes atendidos ?. <input type="number" id="i6" /></p>
+
+      <p>
+        Qual a % meta de clientes este mês ?. <input type="number" id="i7" />
+      </p>
+
+      <p>
+        Quantos clientes tem cadastrados esse mês ?.
+        <input type="number" id="i8" />
+      </p>
+
+      <input type="button" value="Executar" onclick="exe()" />
+    </div>
+
+    <script>
+      function pulaLinha() {
+        document.write("<br><br>");
+      }
+
+      function mostra(frase) {
+        document.write(frase);
+        pulaLinha();
+      }
+
+      function exe() {
+        var e1 = document.querySelector("input#i1");
+        var e2 = document.querySelector("input#i2");
+        var e3 = document.querySelector("input#i3");
+        var e4 = document.querySelector("input#i4");
+        var e5 = document.querySelector("input#i5");
+        var e6 = document.querySelector("input#i6");
+        var e7 = document.querySelector("input#i7");
+        var e8 = document.querySelector("input#i8");
+        var valor = Number(e1.value);
+        var meta = Number(e2.value);
+        var mixVendido = parseFloat(e3.value);
+        var porcMetaMix = parseFloat(e4.value);
+        var estoque = Number(e5.value);
+        var clienteAtendido = parseFloat(e6.value);
+        var clienteMeta = parseFloat(e7.value);
+        var clientes = Number(e8.value);
+        var valorPorc = Number((valor / meta) * 100).toFixed(2);
+        var valorReceber = Number((valor * 0.7) / 100).toFixed(2);
+        var mixPorc = Number((mixVendido * estoque) / 100).toFixed(0);
+        var clientePorc = Number((clienteAtendido * clientes) / 100).toFixed(2);
+        var metaMix = Number((mixPorc / estoque) * 100).toFixed(2);
+        var valor1 = Number(valorReceber * 0.3).toFixed(2);
+        var valor2 = Number(valorReceber * 0.4).toFixed(2);
+
+        mostra(
+          "Porcentagem de venda até o momento é .. " + Number(valorPorc) + "%"
+        );
+
+        mostra("Valor de comissão atual R$ " + Number(valorReceber) + ".");
+        if (Number(valor >= meta)) {
+          mostra("Comissão meta valor ! R$ " + Number(valor2));
+        } else {
+          mostra("Ainda nao bateu meta de valor =(");
+        }
+
+        mostra("Mix até o momento é .. " + Number(mixPorc));
+        if (Number(mixVendido >= porcMetaMix)) {
+          mostra("Comissão meta de Mix R$ " + Number(valor1));
+        } else {
+          mostra("Não bateu a meta de MIX =(");
+        }
+
+        mostra("Clientes até o momento é .. " + Number(clientePorc));
+        if (Number(clienteAtendido >= clienteMeta)) {
+          mostra("Comissão meta de Atendimento R$ " + Number(valor1));
+        } else {
+          mostra("Não bateu a meta de Atendimento =(");
+        }
+
+        mostra("****Valor Total****");
+        if (
+          valor >= meta &&
+          mixVendido >= porcMetaMix &&
+          clienteAtendido >= clienteMeta
+        ) {
+          mostra("Comissão este mês é de R$ " + (valorReceber + valor2) * 2);
+        }
+
+        if (
+          valor >= meta &&
+          mixVendido >= porcMetaMix &&
+          clienteAtendido <= clienteMeta
+        ) {
+          mostra(
+            "Comissão este mês é de R$ " + (valorReceber + valor2 + valor1)
+          );
+        }
+
+        if (
+          valor >= meta &&
+          mixVendido <= porcMetaMix &&
+          clienteAtendido >= clienteMeta
+        ) {
+          mostra(
+            "Comissão este mês é de R$ " + (valorReceber + valor2 + valor1)
+          );
+        }
+
+        if (
+          valor >= meta &&
+          mixVendido <= porcMetaMix &&
+          clienteAtendido <= clienteMeta
+        ) {
+          mostra("Comissão este mês é de R$ " + (valorReceber + valor2));
+        }
+
+        if (
+          valor <= meta &&
+          mixVendido >= porcMetaMix &&
+          clienteAtendido >= clienteMeta
+        ) {
+          mostra("Comissão este mês é de R$ " + (valorReceber + valor1 * 2));
+        }
+
+        if (
+          valor <= meta &&
+          mixVendido <= porcMetaMix &&
+          clienteAtendido >= clienteMeta
+        ) {
+          mostra("Comissão este mês é de R$ " + (valorReceber + valor1));
+        }
+
+        if (
+          valor <= meta &&
+          mixVendido >= porcMetaMix &&
+          clienteAtendido <= clienteMeta
+        ) {
+          mostra("Comissão este mês é de R$ " + (valorReceber + valor1));
+        }
+
+        if (
+          valor <= meta &&
+          mixVendido <= porcMetaMix &&
+          clienteAtendido <= clienteMeta
+        ) {
+          mostra("Comissão este mês é de R$ " + valorReceber);
+        }
+      }
+    </script>
+  </body>
+</html>
