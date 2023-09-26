@@ -69,41 +69,48 @@
         var e8 = document.querySelector("input#i8");
         var valor = Number(e1.value);
         var meta = Number(e2.value);
-        var mixVendido = parseFloat(e3.value);
-        var porcMetaMix = parseFloat(e4.value);
+        var mixVendido = Number(e3.value);
+        var porcMetaMix = Number(e4.value);
         var estoque = Number(e5.value);
-        var clienteAtendido = parseFloat(e6.value);
-        var clienteMeta = parseFloat(e7.value);
+        var clienteAtendido = Number(e6.value);
+        var clienteMeta = Number(e7.value);
         var clientes = Number(e8.value);
-        var valorPorc = Number((valor / meta) * 100).toFixed(2);
-        var valorReceber = Number((valor * 0.7) / 100).toFixed(2);
-        var mixPorc = Number((mixVendido * estoque) / 100).toFixed(0);
-        var clientePorc = Number((clienteAtendido * clientes) / 100).toFixed(2);
-        var metaMix = Number((mixPorc / estoque) * 100).toFixed(2);
-        var valor1 = Number(valorReceber * 0.3).toFixed(2);
-        var valor2 = Number(valorReceber * 0.4).toFixed(2);
+        var valorPorc = Number((valor / meta) * 100);
+        var valorReceber = Number((valor * 0.7) / 100);
+        var mixPorc = Number((mixVendido * estoque) / 100);
+        var clientePorc = Number((clienteAtendido * clientes) / 100);
+        var metaMix = Number((mixPorc / estoque) * 100);
+        var valor1 = Number(valorReceber * 0.3);
+        var valor2 = Number(valorReceber * 0.4);
+        var c1 = valorReceber + valor2 * 2;
+        var c2 = valorReceber + valor2 + valor1;
+        var c3 = valorReceber + valor2;
+        var c4 = valorReceber + valor1 * 2;
+        var c5 = valorReceber + valor1;
 
         mostra(
-          "Porcentagem de venda até o momento é .. " + Number(valorPorc) + "%"
+          "Porcentagem de venda até o momento é .. " +
+            valorPorc.toFixed(2) +
+            "%"
         );
 
-        mostra("Valor de comissão atual R$ " + Number(valorReceber) + ".");
-        if (Number(valor >= meta)) {
-          mostra("Comissão meta valor ! R$ " + Number(valor2));
+        mostra("Valor de comissão atual R$ " + valorReceber.toFixed(2));
+        if (valor >= meta) {
+          mostra("Comissão meta valor ! R$ " + valor2.toFixed(2));
         } else {
           mostra("Ainda nao bateu meta de valor =(");
         }
 
-        mostra("Mix até o momento é .. " + Number(mixPorc));
-        if (Number(mixVendido >= porcMetaMix)) {
-          mostra("Comissão meta de Mix R$ " + Number(valor1));
+        mostra("Mix até o momento é .. " + mixPorc);
+        if (mixVendido >= porcMetaMix) {
+          mostra("Comissão meta de Mix R$ " + valor1.toFixed(2));
         } else {
           mostra("Não bateu a meta de MIX =(");
         }
 
-        mostra("Clientes até o momento é .. " + Number(clientePorc));
-        if (Number(clienteAtendido >= clienteMeta)) {
-          mostra("Comissão meta de Atendimento R$ " + Number(valor1));
+        mostra("Clientes até o momento é .. " + clientePorc);
+        if (clienteAtendido >= clienteMeta) {
+          mostra("Comissão meta de Atendimento R$ " + valor1.toFixed(2));
         } else {
           mostra("Não bateu a meta de Atendimento =(");
         }
@@ -114,7 +121,7 @@
           mixVendido >= porcMetaMix &&
           clienteAtendido >= clienteMeta
         ) {
-          mostra("Comissão este mês é de R$ " + (valorReceber + valor2) * 2);
+          mostra("Comissão este mês é de R$ " + c1.toFixed(2));
         }
 
         if (
@@ -122,9 +129,7 @@
           mixVendido >= porcMetaMix &&
           clienteAtendido <= clienteMeta
         ) {
-          mostra(
-            "Comissão este mês é de R$ " + (valorReceber + valor2 + valor1)
-          );
+          mostra("Comissão este mês é de R$ " + c2.toFixed(2));
         }
 
         if (
@@ -132,9 +137,7 @@
           mixVendido <= porcMetaMix &&
           clienteAtendido >= clienteMeta
         ) {
-          mostra(
-            "Comissão este mês é de R$ " + (valorReceber + valor2 + valor1)
-          );
+          mostra("Comissão este mês é de R$ " + c2.toFixed(2));
         }
 
         if (
@@ -142,7 +145,7 @@
           mixVendido <= porcMetaMix &&
           clienteAtendido <= clienteMeta
         ) {
-          mostra("Comissão este mês é de R$ " + (valorReceber + valor2));
+          mostra("Comissão este mês é de R$ " + c3.toFixed(2));
         }
 
         if (
@@ -150,7 +153,7 @@
           mixVendido >= porcMetaMix &&
           clienteAtendido >= clienteMeta
         ) {
-          mostra("Comissão este mês é de R$ " + (valorReceber + valor1 * 2));
+          mostra("Comissão este mês é de R$ " + c4.toFixed(2));
         }
 
         if (
@@ -158,7 +161,7 @@
           mixVendido <= porcMetaMix &&
           clienteAtendido >= clienteMeta
         ) {
-          mostra("Comissão este mês é de R$ " + (valorReceber + valor1));
+          mostra("Comissão este mês é de R$ " + c5.toFixed(2));
         }
 
         if (
@@ -166,7 +169,7 @@
           mixVendido >= porcMetaMix &&
           clienteAtendido <= clienteMeta
         ) {
-          mostra("Comissão este mês é de R$ " + (valorReceber + valor1));
+          mostra("Comissão este mês é de R$ " + c5.toFixed(2));
         }
 
         if (
@@ -174,7 +177,7 @@
           mixVendido <= porcMetaMix &&
           clienteAtendido <= clienteMeta
         ) {
-          mostra("Comissão este mês é de R$ " + valorReceber);
+          mostra("Comissão este mês é de R$ " + valorReceber.toFixed(2));
         }
       }
     </script>
