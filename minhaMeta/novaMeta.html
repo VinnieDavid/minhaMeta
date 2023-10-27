@@ -87,6 +87,8 @@
         var c3 = valorReceber + valor2;
         var c4 = valorReceber + valor1 * 2;
         var c5 = valorReceber + valor1;
+        var faltaMix = Number((porcMetaMix * estoque) / 100 - mixPorc);
+        var faltaCliente = Number((clienteMeta * clientes) / 100 - clientePorc);
 
         mostra(
           "Porcentagem de venda até o momento é .. " +
@@ -100,20 +102,25 @@
         } else {
           mostra("Ainda nao bateu meta de valor =(");
         }
+        mostra("~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~");
 
         mostra("Mix até o momento é .. " + mixPorc);
         if (mixVendido >= porcMetaMix) {
           mostra("Comissão meta de Mix R$ " + valor1.toFixed(2));
         } else {
           mostra("Não bateu a meta de MIX =(");
+          mostra("Ainda falta " + faltaMix.toFixed(2));
         }
+        mostra("~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~");
 
         mostra("Clientes até o momento é .. " + clientePorc);
         if (clienteAtendido >= clienteMeta) {
           mostra("Comissão meta de Atendimento R$ " + valor1.toFixed(2));
         } else {
           mostra("Não bateu a meta de Atendimento =(");
+          mostra("Ainda falta " + faltaCliente.toFixed(2));
         }
+        mostra("~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~");
 
         mostra("****Valor Total****");
         if (
