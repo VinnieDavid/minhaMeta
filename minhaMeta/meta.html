@@ -5,48 +5,73 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Novo Curso</title>
-    <style>
-      body {
-        background-color: rgb(179, 170, 170);
-      }
-      h1 {
-        color: rgb(0, 0, 0);
-      }
-    </style>
   </head>
+  <style>
+    body {
+      background-image: url(img1.jpg);
+      background-repeat: no-repeat;
+      background-size: cover;
+      text-align: center;
+    }
+    header {
+      color: rgb(0, 0, 0);
+      text-align: center;
+      text-decoration: underline;
+      font-style: italic;
+      font-size: 20px;
+    }
+
+    section {
+      color: rgb(255, 255, 255);
+      font-style: Arial;
+      background: rgba(3, 3, 3, 0.897);
+      border-radius: 50px;
+      padding: 100px;
+      width: 200px;
+      margin: auto;
+      box-shadow: 15px 15px 29px rgba(255, 255, 255, 0.808);
+    }
+  </style>
+
   <body>
-    <h1>Nova meta 2.0</h1>
-    <p>
-      "Remodelando o calculo da minha meta." <br /><br />
-      "Esperando para a implementacao de banco de dados !."<br /><br />
-    </p>
-    <div>
-      <p>Digite o valor de suas vendas !. <input type="number" id="i1" /></p>
+    <header>
+      <h1>Nova meta 2.0</h1>
+      <div>
+        "Remodelando o calculo da minha meta." <br /><br />
+        "Esperando para a implementacao de banco de dados !."<br /><br />
+      </div>
+    </header>
+    <section>
+      <div>
+        <p>Digite o valor de suas vendas !. <input type="number" id="i1" /></p>
 
-      <p>Digite sua meta de valor !. <input type="number" id="i2" /></p>
+        <p>Digite sua meta de valor !. <input type="number" id="i2" /></p>
 
-      <p>E qual a % de mix atendidos ?. <input type="number" id="i3" /></p>
+        <p>E qual a % de mix atendidos ?. <input type="number" id="i3" /></p>
 
-      <p>Qual a % da meta do Mix este mês ?. <input type="number" id="i4" /></p>
+        <p>
+          Qual a % da meta do Mix este mês ?. <input type="number" id="i4" />
+        </p>
 
-      <p>
-        Quantos itens tem para venda no estoque esse mês ?.
-        <input type="number" id="i5" />
-      </p>
+        <p>
+          Quantos itens tem para venda no estoque esse mês ?.
+          <input type="number" id="i5" />
+        </p>
 
-      <p>Qual % de clientes atendidos ?. <input type="number" id="i6" /></p>
+        <p>Qual % de clientes atendidos ?. <input type="number" id="i6" /></p>
 
-      <p>
-        Qual a % meta de clientes este mês ?. <input type="number" id="i7" />
-      </p>
+        <p>
+          Qual a % meta de clientes este mês ?. <input type="number" id="i7" />
+        </p>
 
-      <p>
-        Quantos clientes tem cadastrados esse mês ?.
-        <input type="number" id="i8" />
-      </p>
+        <p>
+          Quantos clientes tem cadastrados esse mês ?.
+          <input type="number" id="i8" />
+        </p>
 
-      <input type="button" value="Executar" onclick="exe()" />
-    </div>
+        <input type="button" value="Executar" onclick="exe()" />
+      </div>
+    </section>
 
     <script>
       function pulaLinha() {
